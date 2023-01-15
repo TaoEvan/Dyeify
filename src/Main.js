@@ -68,13 +68,16 @@ var addplaylist = function (id,token) {
 };
 
 function getTopSong(songID){
-spotifyApi
-  .clientCredentialsGrant()
-  .then(function(data) {
-    return spotifyApi.getArtistTopTracks(songID);
-  })
+  spotifyApi.getArtistTopTracks(songID,)
+  .then(function(data){
+    console.log(data.body);
+    }, function(err) {
+    console.log('Something went wrong!', err);
+  });
 }
 
+
+function autoCon(){}
 
 
 
