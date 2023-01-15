@@ -1,23 +1,9 @@
-/* Load the HTTP library */
-const host = 'localhost';
-const port = 8888;
-
-var http = require('http');
-
-/* Create an HTTP server to handle responses */
-
-const server = http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.write('Hello World');
-    response.end();
-});
-server.listen(port, host);
 
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
 
 var scopes = ['playlist-modify-private', 'playlist-modify-public'],
-  redirectUri = 'https://localhost:8888/callback',
+  redirectUri = 'http://127.0.0.1:5500/Dyeify/src/index.html',
 
   clientId = 'f3ec916c906f484c9ab9d3e8038aba05',
   clientSecret = '6bfe8ca08d914683a9c71d6d35655e3c',
