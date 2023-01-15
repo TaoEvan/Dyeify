@@ -21,6 +21,7 @@ var spotifyApi = new SpotifyWebApi({
 // Create the authorization URL
 // var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
+
 function buttonAuth(){
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
   fs.writeFile('Link.txt', authorizeURL, (err) => {
@@ -35,6 +36,13 @@ function openLink() {
   window = Window;
   window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
 }
+
+var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
 
 var getArtist = function (genre){
   $.ajax({
@@ -67,30 +75,6 @@ function getTopSong(songID){
   });
 }
 
-function makePlaylist(name, desc){
-  var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
-  .then(function(data) {
-    console.log('Created playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-}
-
-function fillPlaylist(color){
-  const colorDict = colorDict();
-  hsl = colorDict.getHSLColour();
-  genreKey = evaluateGenre(hsl[0], hsl[1], hsl[2]);
-  genre = colorDict.hueDictionary(genreKey);
-  artist = getArtist(genre);
-  topSong = getTopSong(artist);
-  spotifyApi.addTracksToPlaylist(playlist, topSong)
-  .then(function(data) {
-    console.log('Added tracks to playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-
-}
 
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
