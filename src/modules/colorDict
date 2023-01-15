@@ -42,13 +42,13 @@ exports.colorDict = function() {
     //Yellow  ***POP
     2.1:["Jazz"],// LIGHTEST
     2.2:["Jazz"],// True Light  
-    2.3:["Pop","Jazz"],// TRUE 
+    2.3:["Pop"],// TRUE 
     2.4:["Jazz"],// light grey 
     2.5:["Jazz"],// shade 
     2.6:["Jazz"],// deep shade 
     2.7:["Metal"],// Grey 
     2.8:["Jazz"],// slight gray dark 
-    2.9:["SOul"],// Deep Brown 
+    2.9:["Soul"],// Deep Brown 
     
     // lime 
     3.1:["Jpop"],// LIGHTEST
@@ -68,7 +68,7 @@ exports.colorDict = function() {
     4.4:["industrial"],// light grey 
     4.5:["road-trip"],// shade 
     4.6:["salsa"],// deep shade 
-    4.7:["Avant-garde"],// Grey 
+    4.7:["avant-garde"],// Grey 
     4.8:["spanish"],// slight gray dark 
     4.9:["samba"],// Deep Brown 
     

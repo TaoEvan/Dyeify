@@ -25,23 +25,23 @@ function buttonAuth(){
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
   fs.writeFile('Link.txt', authorizeURL, (err) => {
 
-    // Make button disappear after pressing
-    document.getElementById("button").style.display = "none";
-    // In case of a error throw err.
-    if (err) throw err;
+  // Make button disappear after pressing
+  document.getElementById("button").style.display = "none";
+  // In case of a error throw err.
+  if (err) throw err;
 })
 }
 buttonAuth();
 
 function openLink() {
   window = Window;
-  window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
+  window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=F");
 }
 
 var getArtist = function (genre){
   $.ajax({
-      url: 'https://api.spotify.com/v1/Search/',   
-      success: function (response) {  
+      url: 'https://api.spotify.com/v1/Search/',
+      success: function (response) {
           callback(response);
       }
   });
