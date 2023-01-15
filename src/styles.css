@@ -1,59 +1,129 @@
 /* Content */
-*{
+* {
+    /* Centers screen at top left. */
     margin: 0;
     padding: 0;
+
+    /* Stylize the Poppins font (the best font to ever exist.) */
     font-family: "Poppins", sans-serif;
+
+    max-height: 100vh; /* Exists so user can't scroll. */
+    max-width: 100vw; /* Exists so user can't scroll. */
 }
-    /* Main Container */
-.container{
-    width: 100%;
-    height: 200vh;
-    background-color:#070707;
-    
+
+/* Main Container */
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #070707;
+
+    /* Puts default cursor into container. */
     cursor: url("images/cursors/default.png"), default;
 }
-    /* Drawings */
-.logo{
+
+/* All elements that are aligned in the middle. */
+.middle{
+    display: block;
+    margin: auto;
+}
+
+/* Properties of Text */
+
+h1{
+    font-size:100px;
+    display:inline-block;
+}
+
+.middle .typewritertext{
+    margin-top: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+    text-align:center;
+    border-right: 2px solid #9fb233af;
+    animation: typewriter 0.5s steps(40) 1s 1 normal both,
+    blinkTextCursor 1s steps(40) infinite normal;
+}
+
+/* Coloured text. */
+.green{
+    color:#A0B233;
+}
+
+.purple{
+    color:#7F3CCB;
+}
+
+/* Navigation Menu */
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 5vh;
+}
+
+/* Element in the list. */
+nav ul li a{
+    text-decoration:none;
+    font-size: 2.5vh;
+    cursor: url("images/cursors/pointer.png"), pointer;
+}
+
+nav ul li a:hover{
+    animation: purpleToGreen 0.5s forwards;
+}
+
+.logo {
     display: auto;
     margin: 2% 2% 2% 2%;
     width: 2.5%;
     height: 2.5%;
 }
-.mainDecor{
-    display: block;
-    margin: auto;
+
+/* Major Screen */
+.middle .decor {
     width: 60%;
     height: 60%;
     animation: fadeIn 0.5s;
 }
 
-    /* Buttons */
-.button{
-    display: block;
-    margin: auto;
-    margin-top: -12.5%;
-    background-image:linear-gradient(#7F657A, #7F3CCB);
-    color:rgba(255, 255, 255, 0.5);
-    font-size: 16px; font-weight:400; 
-    width: 17.5vh; height: 17.5vh;
-    border-radius: 50%; border: none;
-    box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
-}
-.button:hover{
+/* Buttons */
+.pointerBlock {
     cursor: url("images/cursors/pointer.png"), pointer;
+}
+
+.middle .authButton {
+    margin-top: -27.5vh;
+    background-image: linear-gradient(#7F657A, #7F3CCB);
+    color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
+    font-size: 16px; font-weight: 400;
+    width: 15vh; height: 15vh;
+    border-radius: 50%; border: none;
+    animation: fadeIn 0.5s;
+}
+
+.middle .authButton:hover {
     animation: hoverButton 1s infinite;
 }
-.button:active{
-    cursor: url("images/cursors/pointer.png"), pointer;
-    animation: pressButton 1s;
+
+.middle .authButton:active {
+    animation: pressButton 1s alternate;
+}
+
+.middle .paletteButton {
+    margin-left: -40vh;
 }
 
 /* Animations */
-@keyframes fadeIn{
+@keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: rotateX(-45deg);
-        transform: translateY(-5%);
+        transform: rotateX(45deg);
+        transform: translateY(5%);
     }
 
     100% {
@@ -63,7 +133,8 @@
     }
 }
 
-@keyframes hoverButton{
+/* Bob when button is hovered. */
+@keyframes hoverButton {
     0% {
         transform: scale(1);
     }
@@ -78,12 +149,43 @@
 
 }
 
-@keyframes pressButton{
+/* Scale down when button is pressed. */
+@keyframes pressButton {
     0% {
         transform: scale(1);
     }
 
-    50% {
+    100% {
         transform: scale(0.80);
+    }
+}
+
+/* Text fading from one to another. */
+@keyframes typewriter {
+    from{
+        width: 0;
+    }
+    to{
+        width: 8em;
+    }
+}
+
+/* Cursor blinking. */
+@keyframes blinkTextCursor{
+    from{
+        border-right-color:#9fb233af;
+    }
+    to{
+        border-right-color:transparent;
+    }
+}
+
+/* Colour changes. */
+@keyframes purpleToGreen{
+    from{
+        color:#7F3CCB;
+    }
+    to{
+        color:#A0B233;
     }
 }
