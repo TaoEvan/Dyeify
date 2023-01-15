@@ -44,8 +44,8 @@ function test(){
 function getArtist(grenre){
   http
   .createServer(function(request, response) {
-    response.writeHead(200, { 'Search-Quary': grenre });
-    response.end();
+    request.writeHead(200, { 'Search-Quary': grenre });
+    request.end();
   })
 }
 
