@@ -1,138 +1,27 @@
-var Spotify = require('spotify-web-api-js');
-var s = new Spotify();
+var SpotifyWebApi = require('spotify-web-api-node');
 
-var spotifyApi = new SpotifyWebApi();
+var scopes = ['playlist-modify-private'],
+  redirectUri = 'http://127.0.0.1:5500/Testing/index.html',
+  clientId = 'f3ec916c906f484c9ab9d3e8038aba05',
+  state = 'some-state-of-my-choice';
 
+// Setting credentials can be done in the wrapper's constructor, or using the API object's setters.
+var spotifyApi = new SpotifyWebApi({
+  redirectUri: redirectUri,
+  clientId: clientId
+});
 
-spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function (err, data) {
-    if (err) console.error(err);
-    else console.log('Artist albums', data);
-  });
-  
-  // get Elvis' albums, using Promises through Promise, Q or when
-  spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-    function (data) {
-      console.log('Artist albums', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
+// Create the authorization URL
+var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
-  var prev = null;
+// https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
+console.log(authorizeURL);
 
-function onUserInput(queryTerm) {
-  // abort previous request, if any
-  if (prev !== null) {
-    prev.abort();
-  }
+// spotifyApi.setAccessToken('<your_access_token>');
 
-  // store the current promise in case we need to abort it
-  prev = spotifyApi.searchTracks(queryTerm, { limit: 5 });
-  prev.then(
-    function (data) {
-      // clean the promise so it doesn't call abort
-      prev = null;
-
-      // ...render list of search results...
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-}
-
-// passing a callback - get Elvis' albums in range [20...29]
-spotifyApi.getArtistAlbums(
-    '43ZHCT0cAZBISjO8DG9PnE',
-    { limit: 10, offset: 20 },
-    function (err, data) {
-      if (err) console.error(err);
-      else console.log('Artist albums', data);
-    }
-  );
-  
-  // using Promises through Promise, Q or when - get Elvis' albums in range [20...29]
-  spotifyApi
-    .getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', { limit: 10, offset: 20 })
-    .then(
-      function (data) {
-        console.log('Album information', data);
-      },
-      function (err) {
-        console.error(err);
-      }
-    );
-
-
-    // get multiple albums
-spotifyApi.getAlbums(['5U4W9E5WsYb2jUQWePT8Xm', '3KyVcddATClQKIdtaap4bV']).then(
-    function (data) {
-      console.log('Albums information', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-  
-  // get an artists
-  spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3').then(
-    function (data) {
-      console.log('Artist information', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-  
-  // get multiple artists
-  spotifyApi
-    .getArtists(['2hazSY4Ef3aB9ATXW7F5w3', '6J6yx1t3nwIDyPXk5xa7O8'])
-    .then(
-      function (data) {
-        console.log('Artists information', data);
-      },
-      function (err) {
-        console.error(err);
-      }
-    );
-  
-  // get albums by a certain artist
-  spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-    function (data) {
-      console.log('Artist albums', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-  
-  // search tracks whose name, album or artist contains 'Love'
-  spotifyApi.searchTracks('Love').then(
-    function (data) {
-      console.log('Search by "Love"', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-  
-  // search artists whose name contains 'Love'
-  spotifyApi.searchArtists('Love').then(
-    function (data) {
-      console.log('Search artists by "Love"', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
-  
-  // search tracks whose artist's name contains 'Love'
-  spotifyApi.searchTracks('artist:Love').then(
-    function (data) {
-      console.log('Search tracks by "Love" in the artist name', data);
-    },
-    function (err) {
-      console.error(err);
-    }
-  );
+// spotifyApi.createPlaylist('My playlist', { 'description': 'My description', 'public': true })
+//   .then(function(data) {
+//     console.log('Created playlist!');
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
