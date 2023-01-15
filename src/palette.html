@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+</style>
+
+<!-- Head. -->
+<head>
+    <!-- Set up character sets and screen width. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width">
+
+    <!-- Title of the webpage. -->
+    <title>Dyeify</title>
+
+    <!--  Stylesheet and logo references. -->
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="images/logos/dyfy.png" rel="icon">
+</head>
+
+<!-- Body. -->
+<body>
+    <!-- Contains the interface. -->
+    <div class="container">
+        <!-- Menu interface. -->
+        <div class="menu">
+            <img src="images/logos/dyfy.png" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class ="purple">home</a></li> <!-- Home page. -->
+                    <li><a href="about.html" class ="purple">about</a></li> <!-- About page. -->
+                </ul>
+            </nav>
+        </div>
+        <div class="middle"> <!-- Centre of the palette page. -->
+            <img src="images/decorations/spaceship.png" class="middle rightDecor">
+            <div class="middle titletypewritertext purple"><h1>make a palette</h1></div>
+            <img src="images/decorations/table.png" class="middle bottomDecor">
+            <input class="middle purple" type="color" value="#ff0000">-->
+            <Button onclick = "generatePlaylist()" type = "Button" class = "middle TopDecor">Generate Playlist</Button>
+        </div>
+
+    </div> <!-- End of container interface. -->
+    <script src="functions.js"></script>
+</body>
+
+</html>

@@ -1,9 +1,11 @@
-exports.openLink = function(){
-    var reader = new FileReader();
+// exports.openLink = function(){
+//     var reader = new FileReader();
 
-    reader.onload = function(e) {
-        var dataURL = reader.result;
-    }
+//     reader.onload = function(e) {
+//         var dataURL = reader.result;
+//         console.log("HELLO   " + dataURL);
+//     }
 
-    return reader.readAsDataURL("Link.txt");
-}
+//     // it is reading nothing from the next file that is why
+//     return reader.readAsDataURL("Link.txt");
+// }

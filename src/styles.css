@@ -9,6 +9,7 @@
 
     max-height: 100vh; /* Exists so user can't scroll. */
     max-width: 100vw; /* Exists so user can't scroll. */
+    overflow:hidden;
 }
 
 /* Main Container */
@@ -30,7 +31,7 @@
 /* Properties of Text */
 
 h1{
-    font-size:100px;
+    font-size:84px;
     display:inline-block;
 }
 
@@ -45,6 +46,21 @@ h1{
     blinkTextCursor 1s steps(40) infinite normal;
 }
 
+.middle .titletypewritertext{
+    margin-top: -25%;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+    text-align:start;
+    border-right: 2px solid #7f3ccba4;
+    animation: titletypewriter 1s steps(40) 1s 1 normal both,
+    blinkTextCursor 1s steps(40) infinite normal;
+}
+
+.middle .center{
+    text-align:center;
+}
+
 /* Coloured text. */
 .green{
     color:#A0B233;
@@ -52,6 +68,10 @@ h1{
 
 .purple{
     color:#7F3CCB;
+}
+
+.purpleGlow{
+    animation: purpleGlow 1s infinite alternate;
 }
 
 /* Navigation Menu */
@@ -85,17 +105,58 @@ nav ul li a:hover{
 }
 
 /* Major Screen */
+.background{
+    position:absolute;
+    width:200%;
+    height:200%;
+    animation: fadeIn 0.5s;
+}
+
 .middle .decor {
     width: 60%;
     height: 60%;
     animation: fadeIn 0.5s;
 }
 
+.middle .rightDecor {
+    width: 35%;
+    height: 35%;
+    margin-left: 75%;
+    animation: fadeInLeft 0.5s;
+}
+
+.middle .bottomDecor{
+width: 60%;
+height: 60%;
+margin-top:-15%;
+animation: fadeInLeft 0.5s;
+}
+
+.middle .paletteColour {
+    background-image: linear-gradient(#7F657A, #7F3CCB);
+    color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
+    font-size: 16px; font-weight: 400;
+    width:20vh; height: 20vh; 
+    border-radius: 50%; border: none;
+    align-items: center;
+    justify-content: center;
+    text-align:center; 
+    display:flex;
+    animation: fadeIn 0.5s;
+}
+
+#colourPicker {
+    width:70vh; height: 50vh; 
+}
+
+
+
 /* Buttons */
 .pointerBlock {
     cursor: url("images/cursors/pointer.png"), pointer;
 }
 
+/* Central Button: Home */
 .middle .authButton {
     background-image: linear-gradient(#7F657A, #7F3CCB);
     color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
@@ -113,6 +174,7 @@ nav ul li a:hover{
     animation: pressButton 1s alternate;
 }
 
+/* Two Side Buttons: Palette & Image */
 .middle .sideButton{
     width: 30%; height: 30%;
     animation: fadeIn 0.5s;
@@ -202,6 +264,16 @@ nav ul li a:hover{
     }
 }
 
+/* Title text from one to another. */
+@keyframes titletypewriter {
+    from{
+        width: 0;
+    }
+    to{
+        width: 40em;
+    }
+}
+
 /* Text fading from one to another. */
 @keyframes typewriter {
     from{
@@ -232,3 +304,11 @@ nav ul li a:hover{
     }
 }
 
+@keyframes purpleGlow{
+    from{
+        text-shadow: 0px 2px 8px #7F3CCB;
+    }
+    to{
+        text-shadow: 0px 2px 8px #7f3ccb30;
+    }
+}
