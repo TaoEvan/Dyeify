@@ -45,43 +45,9 @@ var getArtist = function (grenre){
   });
 };
 
-function makePlayList(name,desc){
-spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
-  .then(function(data) {
-    console.log('Created playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
+function x(){
+console.log(getArtist);
 }
-
-var addplaylist = function (id,token) {
-  $.ajax({
-    dataType: 'text',
-    type: 'post',
-    url: 'https://api.spotify.com/v1/playlists/6sU8XOS7BLicR3COsc0Rhp/tracks?uris=spotify:track:'+ id,
-    headers: {
-      Authorization: "Bearer "+token,
-    },success: function (response) {
-      alert(response);
-    }
-});
-};
-
-function getTopSong(songID){
-  spotifyApi.getArtistTopTracks(songID,)
-  .then(function(data){
-    console.log(data.body);
-    }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-}
-
-
-function autoCon(){}
-
-
-
-
 
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
