@@ -1,4 +1,3 @@
-
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
 var fs = require('fs');
@@ -35,6 +34,10 @@ function openLink() {
   window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
 }
 
+function test(){
+  console.log("BQBWKRBQWHRLQWLIWHEQLIQEWBRL");
+  return
+}
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
 // open(authorizeURL);
