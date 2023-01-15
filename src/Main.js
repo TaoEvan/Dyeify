@@ -1,15 +1,17 @@
 /* Load the HTTP library */
+const host = 'localhost';
+const port = 8888;
+
 var http = require('http');
 
 /* Create an HTTP server to handle responses */
 
-http
-  .createServer(function(request, response) {
+const server = http.createServer(function(request, response) {
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.write('Hello World');
     response.end();
-  })
-  .listen(8888);
+});
+server.listen(port, host);
 
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
