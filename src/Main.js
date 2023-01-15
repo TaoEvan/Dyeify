@@ -1,6 +1,7 @@
 
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
+var fs = require('fs');
 
 var scopes = ['playlist-modify-private', 'playlist-modify-public'],
   redirectUri = 'http://127.0.0.1:5500/Dyeify/src/index.html',
@@ -21,7 +22,17 @@ var spotifyApi = new SpotifyWebApi({
 
 function buttonAuth(){
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
-  open(authorizeURL);
+  fs.writeFile('Link.txt', authorizeURL, (err) => {
+          
+    // In case of a error throw err.
+    if (err) throw err;
+})
+}
+buttonAuth();
+
+function openLink() {
+  window = Window;
+  window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
 }
 
 
