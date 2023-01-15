@@ -201,6 +201,18 @@ function evaluateGenre(hue,brightness,saturation){
  return (mapHueValue(hue) + 0.1*mapBrightNSat(brightness,saturation));
 }
 
+function buttonAuth(){
+
+
+
+
+}
+
+
+  
+
+
+
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
 console.log(authorizeURL);
 
