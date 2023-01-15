@@ -1,23 +1,9 @@
-/* Load the HTTP library */
-const host = 'localhost';
-const port = 8888;
-
-var http = require('http');
-
-/* Create an HTTP server to handle responses */
-
-const server = http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.write('Hello World');
-    response.end();
-});
-server.listen(port, host);
 
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
 
 var scopes = ['playlist-modify-private', 'playlist-modify-public'],
-  redirectUri = 'https://localhost:8888/callback',
+  redirectUri = 'http://127.0.0.1:5500/Dyeify/src/index.html',
 
   clientId = 'f3ec916c906f484c9ab9d3e8038aba05',
   clientSecret = '6bfe8ca08d914683a9c71d6d35655e3c',
@@ -47,7 +33,7 @@ function test(){
 // open(authorizeURL);
 
 
-var code = 'AQDSZEXQM0bc6Ddw3YEDK7JaoU-vSJNVNmSq1ztHZjLE3kPL1E79F5SqV5KYDQl_r1OCvZSNwyRQeqqXGQSYmA_0BN7U0DW2M_EBwS01Io0RHPwNEMg7hrW1jHUyc-9hanAV0xfjrug8quK0G__wmqvw102Es3g1jRDmRGaie0p5bilNmAPY2R1CbRhZE6kKy8YKGjktM6Cb7lXI-TD0Ebr1QKUqk2yLMbgy1H2KFJMBuUMC';
+// var code = 'AQDSZEXQM0bc6Ddw3YEDK7JaoU-vSJNVNmSq1ztHZjLE3kPL1E79F5SqV5KYDQl_r1OCvZSNwyRQeqqXGQSYmA_0BN7U0DW2M_EBwS01Io0RHPwNEMg7hrW1jHUyc-9hanAV0xfjrug8quK0G__wmqvw102Es3g1jRDmRGaie0p5bilNmAPY2R1CbRhZE6kKy8YKGjktM6Cb7lXI-TD0Ebr1QKUqk2yLMbgy1H2KFJMBuUMC';
 
 // spotifyApi.authorizationCodeGrant(code).then(
 //   function(data) {
