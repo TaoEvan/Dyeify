@@ -5,6 +5,7 @@
 </style>
 
 <!-- Head. -->
+
 <head>
     <!-- Set up character sets and screen width. -->
     <meta charset="UTF-8">
@@ -22,44 +23,31 @@
 <body>
     <!-- Contains the interface. -->
     <div class="container">
-
         <!-- Menu interface. -->
         <div class="menu">
             <img src="images/logos/dyfy.png" class="logo">
             <nav>
                 <ul>
-                    <li><a href="index.html" class ="purple">home</a></li> <!-- Home page. -->
-                    <li><a href="about.html" class ="purple">about</a></li> <!-- About page. -->
+                    <li><a href="index.html" class="purple">home</a></li> <!-- Home page. -->
+                    <li><a href="about.html" class="purple">about</a></li> <!-- About page. -->
                 </ul>
             </nav>
         </div>
 
         <div class="middle"> <!-- Centre of the home page. -->
             <img src="images/decorations/sphere.png" class="middle decor">
-            <a href="palette.html"> <img src="images/button/palette.png" class="middle sideButton paletteButton pointerBlock" ></img></a>
-            <a href="genresearch.shtml"> <img src="images/buttons/genresearch.png" class="middle sideButton imageButton pointerBlock" ></img></a>
-            <button onclick="location.href='https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice'" type = "button" class="middle authButton pointerBlock">start</button>
-            <script>
-                exports.openLink = function(){
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    var dataURL = reader.result;
-                }
-
-                var value = reader.readAsText("./Link.txt");
-                }
-            </script>
-            <!--<button onclick="location.href=value" type = "button" class="middle authButton pointerBlock">start</button>
-
-            
-
-            <div class="middle typewritertext green"><p>melodic canvas</p></div>
+            <a href="palette.html"> <img src="images/buttons/palette.png"
+                    class="middle sideButton paletteButton pointerBlock"></img></a>
+            <a href="genresearch.html"> <img src="images/buttons/genresearch.png"
+                    class="middle sideButton imageButton pointerBlock"></img></a>
+                    <button class="middle authButton pointerBlock">start</button>
+            <div class="middle typewritertext green"><p>melodic canvas</p>
+            </div>
         </div>
     </div> End of container interface.
 
     <script src="functions.js"></script>
     <script src="Main.js"></script>
-
 </body>
+
 </html>
