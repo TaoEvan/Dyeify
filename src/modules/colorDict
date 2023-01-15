@@ -213,5 +213,35 @@ function mapBrightNSat(brightness,saturation){
 function evaluateGenre(hue,brightness,saturation){
   return (mapHueValue(hue) + 0.1*mapBrightNSat(brightness,saturation));
 }
+
+function makePlaylist(name, desc){
+  var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+function fillPlaylist(color){
+  const colorDict = colorDict();
+  hsl = colorDict.getHSLColour();
+  genreKey = evaluateGenre(hsl[0], hsl[1], hsl[2]);
+  genre = colorDict.hueDictionary(genreKey);
+  artist = getArtist(genre);
+  topSong = getTopSong(artist);
+  spotifyApi.addTracksToPlaylist(playlist, topSong)
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+function generatePlaylist(){
+  for(let i=0; i<10; i++){
+    fillPlaylist(getHSLColour());
+  }
+}
 return hueDictionary;      
 };
