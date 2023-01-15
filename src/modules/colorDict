@@ -198,7 +198,7 @@ function mapHueValue(hueValue){
   return (local1%30);
 } 
 
-function mapBrightNSat(brigtness,saturation){
+function mapBrightNSat(brightness,saturation){
   // if (brightness >= 95 ){
   //   return 100;
   // } else if (brightness <= 5 ){

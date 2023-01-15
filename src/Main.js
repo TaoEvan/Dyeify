@@ -36,7 +36,7 @@ function openLink() {
   window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
 }
 
-var getArtist = function (grenre){
+var getArtist = function (genre){
   $.ajax({
       url: 'https://api.spotify.com/v1/Search/',   
       success: function (response) {  
@@ -68,10 +68,25 @@ function getTopSong(songID){
 }
 
 
-function fillPlaylist(name, desc){
+function makePlaylist(name, desc){
   var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
   .then(function(data) {
     console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+function fillPlaylist(color){
+  const colorDict = colorDict();
+  hsl = colorDict.getHSLColour();
+  genreKey = evaluateGenre(hsl[0], hsl[1], hsl[2]);
+  genre = colorDict.hueDictionary(genreKey);
+  artist = getArtist(genre);
+  topSong = getTopSong(artist);
+  spotifyApi.addTracksToPlaylist(playlist, topSong)
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
   }, function(err) {
     console.log('Something went wrong!', err);
   });
