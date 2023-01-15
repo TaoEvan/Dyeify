@@ -1,37 +1,89 @@
-body {
-    box-sizing: border-box;
+/* Content */
+*{
     margin: 0;
     padding: 0;
-    background-size: 100%;
-    background-color: #020202;
+    font-family: "Poppins", sans-serif;
 }
-
-
-.navbar {
+    /* Main Container */
+.container{
     width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    padding: 2% 6%;
-    justify-content: space-between;
-    align-items: center;
-    background-color:rgba(167, 187, 236, 0.6);
-    color: #503B31;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 500;
-    font-size: 32px;
-    text-decoration: none;
-    position: fixed;
+    height: 200vh;
+    background-color:#070707;
+    
+    cursor: url("images/cursors/default.png"), default;
+}
+    /* Drawings */
+.logo{
+    display: auto;
+    margin: 2% 2% 2% 2%;
+    width: 2.5%;
+    height: 2.5%;
+}
+.mainDecor{
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    animation: fadeIn 0.5s;
 }
 
-li.nav-links, a.nav-links {
-    /* Makes the links horizontal */
-    display: inline-block;
-    padding: 12px 12px;
-    position: relative;
-    /* Get rid of bullet points of ul and li */
-    list-style: none;
-    margin: 5px;
-    color: #503B31;
-    
+    /* Buttons */
+.button{
+    display: block;
+    margin: auto;
+    margin-top: -12.5%;
+    background-image:linear-gradient(#7F657A, #7F3CCB);
+    color:rgba(255, 255, 255, 0.5);
+    font-size: 16px; font-weight:400; 
+    width: 17.5vh; height: 17.5vh;
+    border-radius: 50%; border: none;
+    box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
+}
+.button:hover{
+    cursor: url("images/cursors/pointer.png"), pointer;
+    animation: hoverButton 1s infinite;
+}
+.button:active{
+    cursor: url("images/cursors/pointer.png"), pointer;
+    animation: pressButton 1s;
+}
+
+/* Animations */
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
+        transform: rotateX(-45deg);
+        transform: translateY(-5%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes hoverButton{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.96);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+@keyframes pressButton{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.80);
+    }
 }
