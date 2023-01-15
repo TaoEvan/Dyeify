@@ -96,10 +96,6 @@ nav ul li a:hover{
     cursor: url("images/cursors/pointer.png"), pointer;
 }
 
-.pointerBlock:hover {
-    animation: hoverButton 1s infinite;
-}
-
 .middle .authButton {
     background-image: linear-gradient(#7F657A, #7F3CCB);
     color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
@@ -122,12 +118,22 @@ nav ul li a:hover{
     animation: fadeIn 0.5s;
 }
 
+.middle .sideButton:hover{
+    animation: hoverButton 1s infinite;
+}
+
+.middle .sideButton:active{
+    animation: pressButton 1s alternate;
+}
+
 .middle .paletteButton {
     margin-top: -15%; margin-left: 5%;
+    animation: fadeInLeft 0.5s;
 }
 
 .middle .imageButton {
     margin-top: -30%; margin-left: 67.5%;
+    animation: fadeInRight 0.5s;
 }
 
 /* Animations */
@@ -144,6 +150,30 @@ nav ul li a:hover{
         transform: translateY(0%);
     }
 }
+
+/* Fade in Left */
+@keyframes fadeInLeft {
+    0% {
+       opacity: 0;
+       transform: translateX(-2vw);
+    }
+    100% {
+       opacity: 1;
+       transform: translateX(0);
+    }
+ }  
+
+ /* Fade in Right */
+@keyframes fadeInRight {
+    0% {
+       opacity: 0;
+       transform: translateX(2vw);
+    }
+    100% {
+       opacity: 1;
+       transform: translateX(0);
+    }
+ }  
 
 /* Bob when button is hovered. */
 @keyframes hoverButton {
@@ -201,3 +231,4 @@ nav ul li a:hover{
         color:#A0B233;
     }
 }
+
