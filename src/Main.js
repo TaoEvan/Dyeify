@@ -98,7 +98,7 @@ function fillPlaylist(color){
 // open(authorizeURL);
 
 
-// var code = 'AQDSZEXQM0bc6Ddw3YEDK7JaoU-vSJNVNmSq1ztHZjLE3kPL1E79F5SqV5KYDQl_r1OCvZSNwyRQeqqXGQSYmA_0BN7U0DW2M_EBwS01Io0RHPwNEMg7hrW1jHUyc-9hanAV0xfjrug8quK0G__wmqvw102Es3g1jRDmRGaie0p5bilNmAPY2R1CbRhZE6kKy8YKGjktM6Cb7lXI-TD0Ebr1QKUqk2yLMbgy1H2KFJMBuUMC';
+// var code = 'AQDSWjMykUfdMHBMs8kgdeBG6_ke6vZJy-4myxKS6Gymm-ooyzffAw1jU9k-PU8IqVqHdCKTu0IoGM1lny-0g7xa-OVHPsOzREOavNHHv1KiV0wwSj3HRH9xlmcOyQ_PkIgJ_0Upf0tuUywC0HjQODp6JBnI-RA9w9RBicS-dDmfnS1Ys25tFm3FJgA4BG5reWQJaH_-4oVPTSsEvoiwuHJwEUxWBIpmYgYp-ctWT1HxdpjwQzA78zknKs4yck3p';
 
 // spotifyApi.authorizationCodeGrant(code).then(
 //   function(data) {

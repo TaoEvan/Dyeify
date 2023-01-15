@@ -132,7 +132,7 @@ margin-top:-15%;
 animation: fadeInLeft 0.5s;
 }
 
-.middle .paletteColour{
+.middle .paletteColour {
     background-image: linear-gradient(#7F657A, #7F3CCB);
     color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
     font-size: 16px; font-weight: 400;
@@ -144,6 +144,12 @@ animation: fadeInLeft 0.5s;
     display:flex;
     animation: fadeIn 0.5s;
 }
+
+#colourPicker {
+    width:70vh; height: 50vh; 
+}
+
+
 
 /* Buttons */
 .pointerBlock {
