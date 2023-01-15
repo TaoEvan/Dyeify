@@ -45,9 +45,40 @@ var getArtist = function (grenre){
   });
 };
 
-function x(){
-console.log(getArtist);
+function makePlayList(name,desc){
+spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
 }
+
+var addplaylist = function (id,token) {
+  $.ajax({
+    dataType: 'text',
+    type: 'post',
+    url: 'https://api.spotify.com/v1/playlists/6sU8XOS7BLicR3COsc0Rhp/tracks?uris=spotify:track:'+ id,
+    headers: {
+      Authorization: "Bearer "+token,
+    },success: function (response) {
+      alert(response);
+    }
+});
+};
+
+function getTopSong(songID){
+spotifyApi
+  .clientCredentialsGrant()
+  .then(function(data) {
+    return spotifyApi.getArtistTopTracks(songID);
+  })
+}
+
+
+
+
+
 
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
@@ -72,10 +103,3 @@ console.log(getArtist);
 // );
 
 // spotifyApi.setAccessToken('BQASBskpprbTXAAZ1vAF-DOSVLmDVBk37OEU3O3MT7QYXHokZT1eAUaMoVPf9cYbv0P5ICGPNp6hXN-4bMu2aTX3nkWB_0hhLzdsjCcQJ4vy9Kw210Sdt6BY19l_yy9pzzmYHmgn8Lc7ifRXLY7nSM5CuEQmmOM9u29Jo7u51hATOPnqiol2LsKQovI-ZpyvEVE9rrD1rmNJ9dEISzBwxTIlA6SSGrKn5M-q9DCj3C-Ar4ZkHewXiAgSbAT3PaEKd74');
-
-spotifyApi.createPlaylist('Spicy Lofi', { 'description': 'uhhhh:/', 'public': true })
-  .then(function(data) {
-    console.log('Created playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
