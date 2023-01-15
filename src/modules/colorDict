@@ -153,7 +153,7 @@ exports.colorDict = function() {
 // Get colour from RGB colour picker
 function getHSLColour() {
   colourRGB = document.getElementById("colourPicker").getAttribute(value);
-  return RGBToHSL(colourRGB[0], colourRGB[1], colourRGB[2]);
+  return RGBToHSL(parseInt(colourRGB[0,2]),parseInt(colourRGB[2,4]), parseInt(colourRGB[4,6]));
 }
 
 const RGBToHSL = (r, g, b) => {
@@ -198,7 +198,7 @@ function mapHueValue(hueValue){
   return (local1%30);
 } 
 
-function mapBrightNSat(brigtness,saturation){
+function mapBrightNSat(brightness,saturation){
   // if (brightness >= 95 ){
   //   return 100;
   // } else if (brightness <= 5 ){

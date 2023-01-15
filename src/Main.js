@@ -51,12 +51,55 @@ function x(){
 console.log(getArtist);
 }
 
+var addplaylist = function (id,token) {
+  spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+};
+
+function getTopSong(songID){
+  spotifyApi.getArtistTopTracks(songID,)
+  .then(function(data){
+    console.log(data.body);
+    }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+function makePlaylist(name, desc){
+  var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
+function fillPlaylist(color){
+  const colorDict = colorDict();
+  hsl = colorDict.getHSLColour();
+  genreKey = evaluateGenre(hsl[0], hsl[1], hsl[2]);
+  genre = colorDict.hueDictionary(genreKey);
+  artist = getArtist(genre);
+  topSong = getTopSong(artist);
+  spotifyApi.addTracksToPlaylist(playlist, topSong)
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+}
+
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
 // open(authorizeURL);
 
 
-// var code = 'AQDSZEXQM0bc6Ddw3YEDK7JaoU-vSJNVNmSq1ztHZjLE3kPL1E79F5SqV5KYDQl_r1OCvZSNwyRQeqqXGQSYmA_0BN7U0DW2M_EBwS01Io0RHPwNEMg7hrW1jHUyc-9hanAV0xfjrug8quK0G__wmqvw102Es3g1jRDmRGaie0p5bilNmAPY2R1CbRhZE6kKy8YKGjktM6Cb7lXI-TD0Ebr1QKUqk2yLMbgy1H2KFJMBuUMC';
+// var code = 'AQDSWjMykUfdMHBMs8kgdeBG6_ke6vZJy-4myxKS6Gymm-ooyzffAw1jU9k-PU8IqVqHdCKTu0IoGM1lny-0g7xa-OVHPsOzREOavNHHv1KiV0wwSj3HRH9xlmcOyQ_PkIgJ_0Upf0tuUywC0HjQODp6JBnI-RA9w9RBicS-dDmfnS1Ys25tFm3FJgA4BG5reWQJaH_-4oVPTSsEvoiwuHJwEUxWBIpmYgYp-ctWT1HxdpjwQzA78zknKs4yck3p';
 
 // spotifyApi.authorizationCodeGrant(code).then(
 //   function(data) {
