@@ -1,15 +1,47 @@
-
-
+// Imports
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
 var fs = require('fs');
+var http = require('http');
+
+// Variable initiation
+
+function print(x){
+  
+}
 
 var scopes = ['playlist-modify-private', 'playlist-modify-public'],
-  redirectUri = 'http://127.0.0.1:5500/Dyeify/src/index.html',
-
+  redirectUri = 'http://localhost:8888', 
   clientId = 'f3ec916c906f484c9ab9d3e8038aba05',
   clientSecret = '6bfe8ca08d914683a9c71d6d35655e3c',
-  state = 'some-state-of-my-choice';
+  state = 'genrating-playlist',
+  authorizeCode = "spofy";
+
+//create a server object:
+var server = http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  var code = req.url;
+  authorizeCode = code.substring(code.indexOf('=')+1, code.indexOf('&'));
+  spotifyApi.authorizationCodeGrant(authorizeCode).then(
+    function(data) {
+      console.log('The token expires in ' + data.body['expires_in']);
+      console.log('The access token is ' + data.body['access_token']);
+      console.log('The refresh token is ' + data.body['refresh_token']);
+  
+      // Set the access token on the API object to use it in later calls
+      spotifyApi.setAccessToken(data.body['access_token']);
+      spotifyApi.setRefreshToken(data.body['refresh_token']);
+
+    },
+    function(err) {
+      console.log('Something went wrong!', err);
+    }
+  );
+  res.write(authorizeCode); //write a response to the client
+  res.end(); //end the response
+})
+
+server.listen(8888); //the server object listens on port 8888
 
 // Setting credentials can be done in the wrapper's constructor, or using the API object's setters.
 var spotifyApi = new SpotifyWebApi({
@@ -19,61 +51,53 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 // Create the authorization URL
-// var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
-
-
 function buttonAuth(){
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
   fs.writeFile('Link.txt', authorizeURL, (err) => {
           
     // In case of a error throw err.
     if (err) throw err;
-})
+  })
 }
-buttonAuth();
+//buttonAuth();
 
-function openLink() {
-  window = Window;
-  window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
-}
+// var playlist = spotifyApi.createPlaylist('hi', { 'description': 'bye', 'public': true })
+//   .then(function(data) {
+//     console.log('Created playlist!');
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
 
-var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
-  .then(function(data) {
-    console.log('Created playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
+// var getArtist = function (genre){
+//   $.ajax({
+//       url: 'https://api.spotify.com/v1/Search/',   
+//       success: function (response) {  
+//           callback(response);
+//       }
+//   });
+// };
 
-var getArtist = function (genre){
-  $.ajax({
-      url: 'https://api.spotify.com/v1/Search/',   
-      success: function (response) {  
-          callback(response);
-      }
-  });
-};
+// function x(){
+// console.log(getArtist);
+// }
 
-function x(){
-console.log(getArtist);
-}
+// var addplaylist = function (id,token) {
+//   spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+//   .then(function(data) {
+//     console.log('Added tracks to playlist!');
+//   }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
+// };
 
-var addplaylist = function (id,token) {
-  spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
-  .then(function(data) {
-    console.log('Added tracks to playlist!');
-  }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-};
-
-function getTopSong(songID){
-  spotifyApi.getArtistTopTracks(songID,)
-  .then(function(data){
-    console.log(data.body);
-    }, function(err) {
-    console.log('Something went wrong!', err);
-  });
-}
+// function getTopSong(songID){
+//   spotifyApi.getArtistTopTracks(songID,)
+//   .then(function(data){
+//     console.log(data.body);
+//     }, function(err) {
+//     console.log('Something went wrong!', err);
+//   });
+// }
 
 
 

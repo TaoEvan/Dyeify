@@ -40,14 +40,25 @@
                     class="middle sideButton paletteButton pointerBlock"></img></a>
             <a href="genresearch.html"> <img src="images/buttons/genresearch.png"
                     class="middle sideButton imageButton pointerBlock"></img></a>
-                    <button class="middle authButton pointerBlock">start</button>
+                    <script>
+                        exports.openLink = function(){
+                        var reader = new FileReader();
+        
+                        reader.onload = function(e) {
+                            var dataURL = reader.result;
+                        }
+        
+                        var value = reader.readAsText("./Link.txt");
+                        console.log(value);
+                        }
+                    </script>
+                    <button onclick="location.href=value" type = "button" class="middle authButton pointerBlock">start</button>
             <div class="middle typewritertext green"><p>melodic canvas</p>
             </div>
         </div>
     </div> End of container interface.
 
     <script src="functions.js"></script>
-    <script src="Main.js"></script>
 </body>
 
 </html>
