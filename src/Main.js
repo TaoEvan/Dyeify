@@ -55,16 +55,12 @@ spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
 }
 
 var addplaylist = function (id,token) {
-  $.ajax({
-    dataType: 'text',
-    type: 'post',
-    url: 'https://api.spotify.com/v1/playlists/6sU8XOS7BLicR3COsc0Rhp/tracks?uris=spotify:track:'+ id,
-    headers: {
-      Authorization: "Bearer "+token,
-    },success: function (response) {
-      alert(response);
-    }
-});
+  spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
 };
 
 function getTopSong(songID){
@@ -77,7 +73,15 @@ function getTopSong(songID){
 }
 
 
-function autoCon(){}
+function fillPlaylist(name, desc){
+  var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+}
 
 
 
