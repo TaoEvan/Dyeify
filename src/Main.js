@@ -1,4 +1,5 @@
 
+
 var SpotifyWebApi = require('spotify-web-api-node');
 var open = require('open');
 var fs = require('fs');
@@ -35,6 +36,45 @@ function openLink() {
   window = Window;
   window.open("https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice");
 }
+
+var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
+  .then(function(data) {
+    console.log('Created playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+
+var getArtist = function (genre){
+  $.ajax({
+      url: 'https://api.spotify.com/v1/Search/',   
+      success: function (response) {  
+          callback(response);
+      }
+  });
+};
+
+function x(){
+console.log(getArtist);
+}
+
+var addplaylist = function (id,token) {
+  spotifyApi.addTracksToPlaylist('5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+  .then(function(data) {
+    console.log('Added tracks to playlist!');
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+};
+
+function getTopSong(songID){
+  spotifyApi.getArtistTopTracks(songID,)
+  .then(function(data){
+    console.log(data.body);
+    }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+}
+
 
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
