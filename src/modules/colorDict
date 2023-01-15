@@ -1,37 +1,22 @@
 exports.colorDict = function() {
     var hueDictionary = {
         /*
-        
         soul = brown,
-        
         reggae = red,
-        
         pop = yellow,
          // NO ROCK IS RED
         rock = green,
-        
         British folk = orange,
-        
         electronica & dance = pink,
-        
         avant-garde = grey,
-        
         jazz = purple,
-        
         hip-hop = black,
-        
-        blues & country = blue,
-        
+        blues & country = blue
         funk = another shade of blue,
-        
         DJ Shadow & RZA = another shade of blue, and
-        
         classical & soundtracks = yet another shade of blue.
-        
         metal 
-        
         */
-        
           // red
         0.1:["Indie Rock"], //Red PEACH
         0.2:["Punk"], //Red PINK LIGHT
