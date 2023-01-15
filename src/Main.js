@@ -49,6 +49,19 @@ function getArtist(grenre){
   })
 }
 
+var getArtist = function (grenre){
+  $.ajax({
+      url: 'https://api.spotify.com/v1/Search/',   
+      success: function (response) {  
+          callback(response);
+      }
+  });
+};
+
+function x(){
+console.log(getArtist);
+}
+
 
 // https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
 // open(authorizeURL);
