@@ -67,7 +67,6 @@ function getTopSong(songID){
   });
 }
 
-
 function makePlaylist(name, desc){
   var playlist = spotifyApi.createPlaylist(name, { 'description': desc, 'public': true })
   .then(function(data) {
