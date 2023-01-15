@@ -143,6 +143,13 @@ nav ul li a:hover{
     animation: fadeIn 0.5s;
 }
 
+.background .stars{
+    width:400%;
+    height:200%;
+    opacity:0.1;
+    animation: sway 4s infinite;
+}
+
 .middle .decor {
     width: 60%;
     height: 60%;
@@ -179,8 +186,6 @@ animation: fadeInLeft 0.5s;
 #colourPicker {
     width:70vh; height: 50vh; 
 }
-
-
 
 /* Buttons */
 .pointerBlock {
@@ -358,4 +363,20 @@ animation: fadeInLeft 0.5s;
         transform: scale(0) translateY(50px);
         opacity: 0;
     }
+}
+
+@keyframes sway{
+    0% {
+        transform: translateX(0);
+        opacity:0;
+    }
+    50% {
+        transform: translateX(1000%);
+        opacity:0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity:1;
+    }
+
 }
