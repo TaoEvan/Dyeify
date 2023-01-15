@@ -96,8 +96,11 @@ nav ul li a:hover{
     cursor: url("images/cursors/pointer.png"), pointer;
 }
 
+.pointerBlock:hover {
+    animation: hoverButton 1s infinite;
+}
+
 .middle .authButton {
-    margin-top: -27.5vh;
     background-image: linear-gradient(#7F657A, #7F3CCB);
     color: rgba(255, 255, 255, 0.5); box-shadow: 0 1vh 2vh rgba(255, 255, 255, 0.5);
     font-size: 16px; font-weight: 400;
@@ -114,8 +117,17 @@ nav ul li a:hover{
     animation: pressButton 1s alternate;
 }
 
+.middle .sideButton{
+    width: 30%; height: 30%;
+    animation: fadeIn 0.5s;
+}
+
 .middle .paletteButton {
-    margin-left: -40vh;
+    margin-top: -15%; margin-left: 5%;
+}
+
+.middle .imageButton {
+    margin-top: -30%; margin-left: 67.5%;
 }
 
 /* Animations */
