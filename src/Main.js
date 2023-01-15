@@ -23,13 +23,11 @@ var spotifyApi = new SpotifyWebApi({
 
 function buttonAuth(){
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
-  fs.writeFile('Link.txt', authorizeURL, (err) => {
 
   // Make button disappear after pressing
   document.getElementById("button").style.display = "none";
   // In case of a error throw err.
   if (err) throw err;
-})
 }
 buttonAuth();
 

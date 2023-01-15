@@ -156,6 +156,9 @@ function getHSLColour() {
   return RGBToHSL(parseInt(colourRGB[0,2]),parseInt(colourRGB[2,4]), parseInt(colourRGB[4,6]));
 }
 
+// Change colour of css
+document.getElementsByClassName('paletteColour', 'middle').style.color = getHSLColour();
+
 const RGBToHSL = (r, g, b) => {
   r /= 255;
   g /= 255;

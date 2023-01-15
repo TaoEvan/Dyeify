@@ -1,4 +1,1 @@
 https://accounts.spotify.com/authorize?client_id=f3ec916c906f484c9ab9d3e8038aba05&response_type=code&redirect_uri=http://127.0.0.1:5500/Dyeify/src/index.html&scope=playlist-modify-private%20playlist-modify-public&state=some-state-of-my-choice
-
-
-AQCCAWhQl7LdL9WoV2mIds87ufOKPr68rjO58iI-mIWQdHmjCb8cDoIwL3vhgmL_YNuOIXb6506_L_cumajgDZ9InxoTR8Iz2Mw8Q-NaAd46BMp4D7-DauEZPKs_ax2zxbkeNyat2EnGgAE9OigCGNPm7eVsha0hB-NDsZ1WqIjgSbi1owmWeFDaSZ0U5ol_5iX3uqf_eZt3JDBf-E0ITDWtHOcrueiKsKh-ILEnbubedUoKtlXQ7WgVa3qe7wqF
